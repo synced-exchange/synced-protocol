@@ -9,15 +9,14 @@ import useRpcChangerCallback from 'hooks/useRpcChangerCallback'
 import { ChainInfo } from 'constants/chainInfo'
 
 import { Modal, ModalHeader } from 'components/Modal'
-import { SectorButton, useSearch, InputField, Table } from 'components/App/Markets'
+import { SectorButton, useSearch, InputField, Table, TrendingMarkets, SynchroniserStats } from 'components/App/Markets'
 import { IconWrapper, Loader } from 'components/Icons'
 import { PrimaryButton } from 'components/Button'
 
 const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  margin: 0 auto;
-  margin-top: 75px;
+  margin: 75px auto;
   width: clamp(250px, 80%, 800px);
   gap: 20px;
 
@@ -173,6 +172,8 @@ export default function Markets() {
         <ModalHeader title={modalRegistrar?.name} onClose={onDismiss} />
         <ModalContent>{getModalContent()}</ModalContent>
       </Modal>
+      <SynchroniserStats />
+      <TrendingMarkets />
       <SectorRow>
         {(Object.keys(Sector) as (keyof typeof Sector)[]).map((sector, index) => {
           if (sector === Sector.COMMODITIES || sector === Sector.MISC) return null

@@ -21,6 +21,24 @@ export interface Tx {
   }
 }
 
+export interface TopMarket {
+  id: string
+  name: string
+  ticker: string
+  symbol: string
+  type: string
+  version: string
+  quoteVolume: string
+}
+
+export interface SynchroniserStat {
+  totalVolumeDEI: string
+  registrarCount: string
+  txCount: string
+  daoFees: string
+  partnerFees: string
+}
+
 export const TRANSACTIONS = gql`
   query getTransactions($account: Bytes!) {
     transactions(where: { from: $account }, orderBy: timestamp, orderDirection: desc) {
@@ -42,6 +60,32 @@ export const TRANSACTIONS = gql`
         symbol
         type
       }
+    }
+  }
+`
+
+export const TOPMARKETS = gql`
+  query getTopMarkets($count: Int!) {
+    registrars(orderBy: quoteVolume, orderDirection: desc, first: $count) {
+      id
+      name
+      ticker
+      symbol
+      type
+      version
+      quoteVolume
+    }
+  }
+`
+
+export const STATS = gql`
+  query getSynchroniserStats {
+    synchronizers {
+      totalVolumeDEI
+      registrarCount
+      txCount
+      daoFees
+      partnerFees
     }
   }
 `
