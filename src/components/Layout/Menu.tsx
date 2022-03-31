@@ -128,7 +128,7 @@ export default function Menu() {
               </IconWrapper>
             </Row>
           </ExternalLink>
-          <ExternalLink href="https://twitter.com/dsynths">
+          <ExternalLink href="https://twitter.com/synced">
             <Row onClick={() => toggle()}>
               <div>Twitter</div>
               <IconWrapper>
@@ -136,7 +136,7 @@ export default function Menu() {
               </IconWrapper>
             </Row>
           </ExternalLink>
-          <ExternalLink href="https://t.me/dsynths">
+          <ExternalLink href="https://t.me/syncedexchange">
             <Row onClick={() => toggle()}>
               <div>Community</div>
               <IconWrapper>
@@ -144,19 +144,11 @@ export default function Menu() {
               </IconWrapper>
             </Row>
           </ExternalLink>
-          <ExternalLink href="https://github.com/dsynths">
+          <ExternalLink href="https://github.com/synced-exchange">
             <Row onClick={() => toggle()}>
               <div>Github</div>
               <IconWrapper>
                 <GithubIcon size={15} />
-              </IconWrapper>
-            </Row>
-          </ExternalLink>
-          <ExternalLink href="https://legacy.dsynths.com">
-            <Row onClick={() => toggle()}>
-              <div>Legacy App</div>
-              <IconWrapper>
-                <ArrowRight size={15} />
               </IconWrapper>
             </Row>
           </ExternalLink>

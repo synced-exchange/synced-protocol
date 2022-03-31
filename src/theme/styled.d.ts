@@ -26,7 +26,6 @@ export interface Colors {
   border2: Color
 
   specialBG1: Color
-  specialBG2: Color
 
   //blues
   primary1: Color
