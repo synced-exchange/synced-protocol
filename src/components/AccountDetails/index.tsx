@@ -6,7 +6,7 @@ import { useAppDispatch } from 'state'
 import useWeb3React from 'hooks/useWeb3'
 import { clearAllTransactions } from 'state/transactions/actions'
 
-import { injected, walletlink } from '../../connectors'
+import { injected } from '../../connectors'
 import { SUPPORTED_WALLETS } from 'constants/wallet'
 import { ExplorerDataType } from 'utils/explorers'
 import { truncateAddress } from 'utils/account'
@@ -177,7 +177,7 @@ export default function AccountDetails({
         <Row>
           {getConnectorName()}
           <div>
-            {connector !== injected && connector !== walletlink && (
+            {connector !== injected && (
               <ActionButton
                 onClick={() => {
                   ;(connector as any).close()

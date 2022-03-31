@@ -9,10 +9,10 @@ import { TradeType } from 'state/trade/reducer'
 
 import useWeb3React from './useWeb3'
 import { useSynchronizerContract } from './useContract'
-import { usePartnerId } from './usePartnerId'
 import { calculateGasMargin } from 'utils/web3'
 import { Muon } from 'lib/synchronizer/muon'
 import { toHex } from 'utils/hex'
+import { PartnerId } from 'constants/addresses'
 
 export enum TradeCallbackState {
   INVALID = 'INVALID',
@@ -33,7 +33,6 @@ export default function useTradeCallback(
   const { chainId, account, library } = useWeb3React()
   const addTransaction = useTransactionAdder()
   const Synchronizer = useSynchronizerContract()
-  const partnerId = usePartnerId()
 
   const registrar = useMemo(() => {
     if (!currencyA || !currencyB) {
@@ -44,7 +43,7 @@ export default function useTradeCallback(
 
   const constructCall = useCallback(async () => {
     try {
-      if (!account || !chainId || !(chainId in MuonChainId) || !registrar || !partnerId || !amountA || !Synchronizer) {
+      if (!account || !chainId || !(chainId in MuonChainId) || !registrar || !amountA || !Synchronizer) {
         throw new Error('Missing dependencies.')
       }
 
@@ -57,7 +56,7 @@ export default function useTradeCallback(
       }
 
       const args = {
-        partnerId,
+        partnerId: PartnerId.address,
         receipient: account,
         registrar,
         amountIn: toHex(amountA.quotient),
@@ -79,7 +78,7 @@ export default function useTradeCallback(
         error,
       }
     }
-  }, [chainId, account, registrar, partnerId, amountA, Synchronizer, tradeType])
+  }, [chainId, account, registrar, amountA, Synchronizer, tradeType])
 
   return useMemo(() => {
     if (!account || !chainId || !library || !Synchronizer || !currencyA || !currencyB) {
