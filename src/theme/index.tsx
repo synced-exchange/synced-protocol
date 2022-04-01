@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Text, TextProps as TextPropsOriginal } from 'rebass'
 import styled, {
   createGlobalStyle,
@@ -7,9 +7,7 @@ import styled, {
   ThemeProvider as StyledComponentsThemeProvider,
 } from 'styled-components'
 
-import { useIsDarkMode } from 'state/user/hooks'
 import { Colors, Shadows } from './styled'
-import { useRouter } from 'next/router'
 
 type TextProps = Omit<TextPropsOriginal, 'css'>
 
@@ -62,28 +60,33 @@ function colors(themeName: SupportedThemes): Colors {
       white,
       black,
 
+      themeColor: '#00C2FF',
+
       // text
       text1: '#FFFFFF',
       text2: '#C3C5CB',
       text3: '#8F96AC',
-      text4: '#B2B9D2',
+      text4: '#6F6F6F',
 
       // backgrounds / greys
-      bg0: '#000000',
-      bg1: '#262B35',
-      bg2: '#0F1217',
-      bg3: '#262B35',
+      bg0: '#011518',
+      bg1: '#01272C',
+      bg2: '#121826',
+      bg3: '#E5E5E5',
+      bg4: '#1a3c41',
 
       // borders
       border1: '#B8B8BE',
-      border2: 'rgba(99 , 126, 161, 0.2)',
+      border2: 'rgba(206, 206, 206, 0.35)',
+      border3: '#A9A8A8',
 
       //specialty colors
       specialBG1: 'linear-gradient(180deg, #000000 14.58%, #00333A 100%)',
+      specialBG2: 'linear-gradient(0deg, #67DAF9, #67DAF9), #F3F4F8',
 
       // primary colors
-      primary1: 'linear-gradient(90deg, #FFBA35 1.54%, #FFB463 98.9%)',
-      primary2: 'linear-gradient(90deg, #FFBA35 1.54%, #FFA76A 50%)',
+      primary1: 'linear-gradient(90deg, #00E6D9 1.98%, #75D8FB 49.43%)',
+      primary2: 'linear-gradient(90deg, #75D8FB 1.98%, #00E6D9 98.43%)',
       primary3: '#FFBA35',
 
       // color text
@@ -96,7 +99,7 @@ function colors(themeName: SupportedThemes): Colors {
       // other
       red1: '#FF4343',
       red2: '#F82D3A',
-      red3: '#D60000',
+      red3: '#FF3300',
       green1: '#27AE60',
       yellow1: '#E3A507',
       yellow2: '#FF8F00',
@@ -109,26 +112,21 @@ function colors(themeName: SupportedThemes): Colors {
       warning: '#FF8F00',
     },
   }
-  // default the theme to light mode
-  return themeName in SupportedThemes ? themeColors[SupportedThemes.LIGHT] : themeColors[themeName]
+  // default the theme to dark mode
+  return themeName in SupportedThemes ? themeColors[SupportedThemes.DARK] : themeColors[themeName]
 }
 
 // define shadow scheme for each supported theme
 function shadows(themeName: SupportedThemes): Shadows {
   const themeShadows = {
-    [SupportedThemes.LIGHT]: {
-      shadow1: '#2F80ED',
-      boxShadow1: '0px 0px 4px rgba(0, 0, 0, 0.125)',
-      boxShadow2: '0px 5px 5px rgba(0, 0, 0, 0.15)',
-    },
     [SupportedThemes.DARK]: {
       shadow1: '#000',
       boxShadow1: '0px 0px 4px rgba(0, 0, 0, 0.125)',
       boxShadow2: '0px 5px 5px rgba(0, 0, 0, 0.15)',
     },
   }
-  // default the theme to light mode
-  return themeName in SupportedThemes ? themeShadows[SupportedThemes.LIGHT] : themeShadows[themeName]
+  // default the theme to dark mode
+  return themeName in SupportedThemes ? themeShadows[SupportedThemes.DARK] : themeShadows[themeName]
 }
 
 function theme(themeName: SupportedThemes): DefaultTheme {
@@ -151,20 +149,24 @@ function theme(themeName: SupportedThemes): DefaultTheme {
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   // get theme name from url if any
-  const router = useRouter()
-  const parsed = router.query?.theme
-  const parsedTheme = parsed && typeof parsed === 'string' ? parsed : undefined
 
-  const darkMode = useIsDarkMode()
+  // Enable the below when we support multiple themes
+  // const router = useRouter()
+  // const parsed = router.query?.theme
 
-  let themeName: SupportedThemes
-  if (parsedTheme && Object.values(SupportedThemes).some((theme: string) => theme === parsedTheme)) {
-    themeName = parsedTheme as SupportedThemes
-  } else {
-    themeName = darkMode ? SupportedThemes.DARK : SupportedThemes.LIGHT
-  }
+  //const parsedTheme = parsed && typeof parsed === 'string' ? parsed : undefined
+  //const darkMode = useIsDarkMode()
 
-  const themeObject = useMemo(() => theme(themeName), [themeName])
+  // let themeName: SupportedThemes
+  // if (parsedTheme && Object.values(SupportedThemes).some((theme: string) => theme === parsedTheme)) {
+  //   themeName = parsedTheme as SupportedThemes
+  // } else {
+  //   themeName = darkMode ? SupportedThemes.DARK : SupportedThemes.LIGHT
+  // }
+
+  // const themeObject = useMemo(() => theme(SupportedThemes.DARK), [SupportedThemes.DARK])
+
+  const themeObject = theme(SupportedThemes.DARK)
 
   return <StyledComponentsThemeProvider theme={themeObject}>{children}</StyledComponentsThemeProvider>
 }
@@ -230,7 +232,7 @@ export const ThemedText = {
 export const ThemedGlobalStyle = createGlobalStyle`
   html {
     color: ${({ theme }) => theme.text1};
-    background-color: ${({ theme }) => theme.bg0} !important;
+    background-color: ${({ theme }) => theme.bg1} !important;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -245,7 +247,7 @@ export const ThemedGlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Rubik';
+    font-family: 'Inter';
     background: ${({ theme }) => theme.specialBG1};
   }
 

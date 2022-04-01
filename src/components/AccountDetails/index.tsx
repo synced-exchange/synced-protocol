@@ -42,7 +42,7 @@ const Row = styled.div`
 `
 
 const Connected = styled.div`
-  color: ${({ theme }) => theme.text2};
+  color: ${({ theme }) => theme.text3};
   font-size: 1rem;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -94,7 +94,7 @@ const MiddleRow = styled(Row)`
 const BottomRow = styled(Row)`
   justify-content: flex-start;
   align-items: center;
-  color: ${({ theme }) => theme.text2};
+  color: ${({ theme }) => theme.text3};
   gap: 5px;
   font-size: 0.8rem;
 
@@ -113,7 +113,7 @@ const AddressLink = styled.div`
 const TransactionsWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  background: ${({ theme }) => theme.bg2};
+  background: ${({ theme }) => theme.bg1};
   padding: 1.5rem;
   overflow: scroll;
   gap: 5px;

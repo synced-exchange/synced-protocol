@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   height: 100%;
   flex-flow: column nowrap;
+  background: url('/static/images/WallpaperGrid.svg') no-repeat fixed bottom;
 `
 
 const Content = styled.div<{
