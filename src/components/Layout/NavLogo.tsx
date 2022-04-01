@@ -1,11 +1,8 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import { isMobile } from 'react-device-detect'
-
-import { useIsDedicatedTheme } from 'hooks/useTheme'
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,18 +23,8 @@ const Wrapper = styled.div`
 `
 
 export default function NavLogo() {
-  const router = useRouter()
-  const isDedicatedTheme = useIsDedicatedTheme()
-
-  const buildUrl = useCallback(
-    (path: string) => {
-      return isDedicatedTheme ? `/${path}?theme=${router.query.theme}` : `/${path}`
-    },
-    [router, isDedicatedTheme]
-  )
-
   return (
-    <Link href={buildUrl('trade')} passHref>
+    <Link href={'/trade'} passHref>
       <Wrapper>
         <div>
           <Image src="/static/images/LogoImage.svg" alt="App Logo" width={30} height={30} />

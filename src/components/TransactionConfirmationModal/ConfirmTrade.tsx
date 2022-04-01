@@ -43,7 +43,8 @@ const TokenRow = styled.div`
   align-items: center;
   gap: 1.25rem;
   font-size: 1.1rem;
-  background: ${({ theme }) => theme.bg1};
+  background: ${({ theme }) => theme.bg3};
+  color: ${({ theme }) => theme.black};
   padding: 0.5rem;
   border-radius: 10px;
 
