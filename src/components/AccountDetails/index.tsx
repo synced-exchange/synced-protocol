@@ -54,7 +54,7 @@ const ActionButton = styled.button<{
   hide?: boolean
   disable?: boolean
 }>`
-  background: ${({ theme }) => theme.primary1};
+  background: ${({ theme }) => theme.specialBG1};
   border-radius: 10px;
   outline: none;
   display: ${({ hide }) => (hide ? 'none' : 'flex')};
@@ -63,10 +63,10 @@ const ActionButton = styled.button<{
   font-size: 0.7rem;
   padding: 0.2rem 0.5rem;
   text-align: center;
-  color: white;
+  color: ${({ theme }) => theme.text2};
 
   &:hover {
-    background: ${({ theme }) => theme.primary2};
+    background: ${({ theme }) => theme.specialBG2};
     cursor: pointer;
   }
 
