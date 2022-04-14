@@ -10,17 +10,15 @@ import {
   NavToggle,
   IconWrapper,
   Info as InfoIcon,
-  Markets as MarketsIcon,
   Telegram as TelegramIcon,
-  Trade as TradeIcon,
   Twitter as TwitterIcon,
   Github as GithubIcon,
-  Wallet as WalletIcon,
 } from 'components/Icons'
 import { Card } from 'components/Card'
 
 import { NavButton } from 'components/Button'
 import { ExternalLink } from 'components/Link'
+import { Layout, Zap } from 'react-feather'
 
 const Container = styled.div`
   overflow: hidden;
@@ -49,7 +47,7 @@ const Row = styled.div<{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  color: ${({ theme }) => theme.text3};
+  color: ${({ theme }) => theme.text4};
   &:hover {
     cursor: pointer;
     color: ${({ theme }) => theme.text1};
@@ -61,7 +59,7 @@ const Row = styled.div<{
   }
 
   #icon {
-    stroke: ${({ theme }) => theme.text3};
+    stroke: ${({ theme }) => theme.text4};
   }
 
   ${({ active, theme }) =>
@@ -91,27 +89,19 @@ export default function Menu() {
       </NavButton>
       <div>
         <InlineModal isOpen={isOpen}>
-          <Link href={'/trade'} passHref>
-            <Row onClick={() => toggle()} active={router.route === '/trade'}>
-              <div>Trade</div>
+          <Link href={'/frontends'} passHref>
+            <Row onClick={() => toggle()} active={router.route === '/frontends'}>
+              <div>Frontends</div>
               <IconWrapper>
-                <TradeIcon id="icon" size={15} />
+                <Layout id="icon" size={15} />
               </IconWrapper>
             </Row>
           </Link>
-          <Link href={'/portfolio'} passHref>
-            <Row active={router.route === '/portfolio'}>
-              <div>Portfolio</div>
+          <Link href={'/sync'} passHref>
+            <Row active={router.route === '/sync'}>
+              <div>Sync</div>
               <IconWrapper>
-                <WalletIcon id="icon" size={15} />
-              </IconWrapper>
-            </Row>
-          </Link>
-          <Link href={'/markets'} passHref>
-            <Row onClick={() => toggle()} active={router.route === '/markets'}>
-              <div>Explore Markets</div>
-              <IconWrapper>
-                <MarketsIcon id="icon" size={15} />
+                <Zap id="icon" size={15} />
               </IconWrapper>
             </Row>
           </Link>

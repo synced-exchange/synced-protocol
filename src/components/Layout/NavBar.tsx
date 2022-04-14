@@ -8,8 +8,6 @@ import { Z_INDEX } from 'theme'
 
 import Web3Network from 'components/Web3Network'
 import Web3Status from 'components/Web3Status'
-import { Search as SearchIcon } from 'components/Icons'
-import { NavButton } from 'components/Button'
 import RegistrarsModal from 'components/RegistrarsModal'
 import Menu from './Menu'
 import NavLogo from './NavLogo'
@@ -103,10 +101,45 @@ const NavLink = styled.div<{
   }
 `
 
-const SearchText = styled.div`
-  font-size: 0.8rem;
-  margin-left: 5px;
-  color: ${({ theme }) => theme.text2};
+const ThemedNavLink = styled.div<{
+  active: boolean
+}>`
+  font-size: 1rem;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  font-weight: 500;
+  background: ${({ theme }) => theme.specialBG1};
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+
+  ${({ active, theme }) =>
+    active &&
+    `
+    pointer-events: none;
+    text-decoration: underline;
+    background: ${theme.specialBG2};
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+    text-decoration-color: ${theme.themeColor};
+    text-underline-offset: 6px;
+  `};
+
+  &:hover {
+    cursor: pointer;
+    background: ${({ theme }) => theme.specialBG2};
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+    text-decoration-color: ${({ theme }) => theme.specialBG2};
+  }
 `
 
 export default function NavBar() {
@@ -128,21 +161,14 @@ export default function NavBar() {
       <DefaultWrapper>
         <NavLogo />
         <Routes>
-          <Link href={'/trade'} passHref>
-            <NavLink active={router.route === '/trade'}>Trade</NavLink>
+          <Link href={'/frontends'} passHref>
+            <NavLink active={router.route === '/frontends'}>Frontends</NavLink>
           </Link>
-          <Link href={'/markets'} passHref>
-            <NavLink active={router.route === '/markets'}>Markets</NavLink>
-          </Link>
-          <Link href={'/portfolio'} passHref>
-            <NavLink active={router.route === '/portfolio'}>Portfolio</NavLink>
+          <Link href={'/sync'} passHref>
+            <ThemedNavLink active={router.route === '/sync'}>$SYNC</ThemedNavLink>
           </Link>
         </Routes>
         <Items>
-          <NavButton onClick={() => setRegistrarModalOpen(true)}>
-            <SearchIcon size={20} />
-            <SearchText>Search for an asset</SearchText>
-          </NavButton>
           <Web3Network />
           <Web3Status />
           <Menu />

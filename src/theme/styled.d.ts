@@ -31,6 +31,7 @@ export interface Colors {
 
   specialBG1: Color
   specialBG2: Color
+  specialBG3: Color
 
   //blues
   primary1: Color

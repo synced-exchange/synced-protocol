@@ -46,7 +46,7 @@ export const NavButton = styled.button`
   text-align: center;
   padding: 0 10px;
   border-radius: 10px;
-  background: ${({ theme }) => theme.bg2};
+  background: ${({ theme }) => theme.bg1};
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -58,15 +58,15 @@ export const NavButton = styled.button`
 `
 
 export const PrimaryButton = styled(BaseButton)`
-  background: ${({ theme }) => theme.primary1};
-  color: ${({ theme }) => theme.text1};
+  background: ${({ theme }) => theme.specialBG1};
+  color: ${({ theme }) => theme.black};
   z-index: 0;
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary2};
     background: ${({ theme }) => theme.primary2};
   }
   &:hover {
-    background: ${({ theme }) => theme.primary2};
+    background: ${({ theme }) => theme.specialBG2};
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary2};

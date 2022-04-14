@@ -60,29 +60,33 @@ function colors(themeName: SupportedThemes): Colors {
       white,
       black,
 
-      themeColor: '#00C2FF',
+      themeColor: '#83D7FD',
 
       // text
-      text1: '#FFFFFF',
-      text2: '#C3C5CB',
-      text3: '#8F96AC',
-      text4: '#6F6F6F',
+      text1: '#EFEFEF',
+      text2: '#000000',
+      text3: 'rgba(255, 255, 255, 0.75)',
+      text4: 'rgba(255, 255, 255, 0.5)',
 
       // backgrounds / greys
-      bg0: '#011518',
-      bg1: '#01272C',
-      bg2: '#121826',
-      bg3: '#E5E5E5',
-      bg4: '#1a3c41',
+      bg0: '#000000',
+      bg1: '#151515',
+      bg2: '#02000F',
+      bg3: '#050505',
+      bg4: 'linear-gradient(180deg, #070707 23.96%, #000000 81.77%)',
 
       // borders
-      border1: '#B8B8BE',
-      border2: 'rgba(206, 206, 206, 0.35)',
-      border3: '#A9A8A8',
+      border1: '#0E1526',
+      border2: '#151515',
+      border3:
+        'linear-gradient(0deg, #010206, #010206), linear-gradient(90deg, rgba(131, 215, 253, 0.6) 1.98%, rgba(232, 207, 250, 0.6) 102.09%), #FFFFFF',
 
       //specialty colors
-      specialBG1: 'linear-gradient(180deg, #000000 14.58%, #00333A 100%)',
-      specialBG2: 'linear-gradient(0deg, #67DAF9, #67DAF9), #F3F4F8',
+      specialBG1:
+        'linear-gradient(90deg, #83D7FD 1.98%, #E8CFFA 102.09%), linear-gradient(90deg, #00E6D9 1.98%, #75D8FB 49.43%), #121826',
+      specialBG2:
+        'linear-gradient(90deg, #E8CFFA 1.98%, #83D7FD 102.09%), linear-gradient(90deg, #75D8FB 1.98%, #00E6D9 49.43%), #121826',
+      specialBG3: 'linear-gradient(#83D7FD 100%, #E8CFFA 100%)',
 
       // primary colors
       primary1: 'linear-gradient(90deg, #00E6D9 1.98%, #75D8FB 49.43%)',
@@ -232,7 +236,7 @@ export const ThemedText = {
 export const ThemedGlobalStyle = createGlobalStyle`
   html {
     color: ${({ theme }) => theme.text1};
-    background-color: ${({ theme }) => theme.bg1} !important;
+    background-color: ${({ theme }) => theme.black} !important;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -248,7 +252,7 @@ export const ThemedGlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter';
-    background: ${({ theme }) => theme.specialBG1};
+    background: ${({ theme }) => theme.black};
   }
 
   button {

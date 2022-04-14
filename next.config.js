@@ -1,14 +1,11 @@
 module.exports = {
   exportPathMap: async function () {
     return {
-      '/markets': {
-        page: '/markets',
+      '/frontends': {
+        page: '/frontends',
       },
-      '/trade': {
-        page: '/trade',
-      },
-      '/portfolio': {
-        page: '/portfolio',
+      '/sync': {
+        page: '/sync',
       },
     }
   },
@@ -16,7 +13,7 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/trade',
+        destination: '/sync',
         permanent: true,
       },
     ]
