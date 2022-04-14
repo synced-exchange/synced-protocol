@@ -1,11 +1,11 @@
 {
   "short_name": "Synced",
-  "name": "Synced Exchange",
-  "background_color": "#191E38",
-  "theme_color": "#191E38",
+  "name": "Synced Protocol",
+  "background_color": "#000000",
+  "theme_color": "#83D7FD",
   "display": "standalone",
-  "homepage_url": "https://synced.exchange",
-  "providedBy": { "name": "Synced", "url": "https://synced.exchange" },
+  "homepage_url": "https://synced.protocol",
+  "providedBy": { "name": "Synced", "url": "https://synced.protocol" },
   "icons": [
     {
       "src": "./images/192x192_App_Icon.png",

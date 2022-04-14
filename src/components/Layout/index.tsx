@@ -16,7 +16,7 @@ const Content = styled.div<{
 }>`
   display: block;
   position: relative;
-  height: calc(100vh - 8rem - ${({ warning }) => (warning ? '80px' : '0px')});
+  height: calc(100vh - 4rem - ${({ warning }) => (warning ? '80px' : '0px')});
   background: ${({ theme }) => theme.black};
   overflow: scroll;
 `
@@ -26,8 +26,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <Wrapper>
       <NavBar />
       <Warning />
-      <Content warning={DISPLAY_WARNING}>{children}</Content>
-      <Footer />
+      <Content warning={DISPLAY_WARNING}>
+        {children}
+        <Footer />
+      </Content>
     </Wrapper>
   )
 }

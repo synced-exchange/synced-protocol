@@ -13,7 +13,7 @@ const DeusBanner = styled.div`
   font-size: 13px;
   color: ${({ theme }) => theme.text2};
   gap: 5px;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   opacity: 0.5;
 `
 

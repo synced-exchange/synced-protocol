@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { FrontendPage } from 'components/App/Frontends'
+import FrontendSites from 'components/App/Frontends'
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const Container = styled.div`
 export default function Frontends() {
   return (
     <Container>
-      <FrontendPage />
+      <FrontendSites />
     </Container>
   )
 }

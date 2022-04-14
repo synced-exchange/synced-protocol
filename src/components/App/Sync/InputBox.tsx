@@ -1,20 +1,9 @@
-import React, { useState, useCallback } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { Currency } from '@sushiswap/core-sdk'
-import { darken } from 'polished'
+import React from 'react'
+import styled from 'styled-components'
 
 import useWeb3React from 'hooks/useWeb3'
-import { useCurrencyBalance } from 'state/wallet/hooks'
-import { maxAmountSpend } from 'utils/currency'
-import useCurrencyLogo from 'hooks/useCurrencyLogo'
-import { useRegistrarByContract } from 'lib/synchronizer/hooks'
 
-import DEI from '/public/static/images/tokens/dei.svg'
-import ImageWithFallback from 'components/ImageWithFallback'
-import RegistrarsModal from 'components/RegistrarsModal'
-import { ChevronDown } from 'components/Icons'
-import { Button } from 'rebass'
-import { BaseButton, PrimaryButton } from 'components/Button'
+import { BaseButton } from 'components/Button'
 
 const Wrapper = styled.div`
   display: flex;
@@ -153,10 +142,6 @@ export default function InputBox({
   return (
     <>
       <Wrapper>
-        {/* <Balance onClick={handleClick}>
-          {balance ? balance.toSignificant(6) : '0.00'} SYNC
-          {showMax && <span>MAX</span>}
-        </Balance> */}
         <NumericalInput
           value={value || ''}
           onUserInput={onChange}

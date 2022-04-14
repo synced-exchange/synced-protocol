@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { BaseButton, PrimaryButton } from 'components/Button'
 import { lighten } from 'polished'
 import { Staking } from 'hooks/useStakeTokenPage'
-import InputBox from '../Trade/InputBox'
+import InputBox from './InputBox'
 
 const Wrapper = styled.div`
   display: flex;

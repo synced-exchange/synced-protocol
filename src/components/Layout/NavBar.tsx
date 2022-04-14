@@ -8,8 +8,6 @@ import { Z_INDEX } from 'theme'
 
 import Web3Network from 'components/Web3Network'
 import Web3Status from 'components/Web3Status'
-import { Search as SearchIcon } from 'components/Icons'
-import { NavButton } from 'components/Button'
 import RegistrarsModal from 'components/RegistrarsModal'
 import Menu from './Menu'
 import NavLogo from './NavLogo'
@@ -142,12 +140,6 @@ const ThemedNavLink = styled.div<{
     width: fit-content;
     text-decoration-color: ${({ theme }) => theme.specialBG2};
   }
-`
-
-const SearchText = styled.div`
-  font-size: 0.8rem;
-  margin-left: 5px;
-  color: ${({ theme }) => theme.text2};
 `
 
 export default function NavBar() {
